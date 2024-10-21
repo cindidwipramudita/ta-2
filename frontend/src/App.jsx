@@ -7,6 +7,7 @@ import PrivateRoutes from "./utils/PrivateRoutes";
 import RoleBaseRoutes from "./utils/RoleBaseRoutes";
 import AdminSummary from "./components/dashboard/AdminSummary";
 import DepartemenList from "./components/departemen/DepartemenList";
+import AddDepartemen from "./components/departemen/AddDepartemen";
 
 function App() {
   return (
@@ -27,7 +28,11 @@ function App() {
         <Route
           path="/admin-dashboard/departemen"
           element={<DepartemenList />}
-        />
+        ></Route>
+        <Route
+          path="/admin-dashboard/add-departemen"
+          element={<AddDepartemen />}
+        ></Route>
       </Route>
 
       <Route path="/pembimbing-dashboard" element={<PembimbingDashboard />} />
