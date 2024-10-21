@@ -5,6 +5,8 @@ import PembimbingDashboard from "./pages/PembimbingDashboard";
 import MahasiswaDashboard from "./pages/MahasiswaDashboard";
 import PrivateRoutes from "./utils/PrivateRoutes";
 import RoleBaseRoutes from "./utils/RoleBaseRoutes";
+import AdminSummary from "./components/dashboard/AdminSummary";
+import DepartemenList from "./components/departemen/DepartemenList";
 
 function App() {
   return (
@@ -20,7 +22,14 @@ function App() {
             </RoleBaseRoutes>
           </PrivateRoutes>
         }
-      />
+      >
+        <Route index element={<AdminSummary />}></Route>
+        <Route
+          path="/admin-dashboard/departemen"
+          element={<DepartemenList />}
+        />
+      </Route>
+
       <Route path="/pembimbing-dashboard" element={<PembimbingDashboard />} />
       <Route path="/mahasiswa-dashboard" element={<MahasiswaDashboard />} />
     </Routes>
