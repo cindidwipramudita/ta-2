@@ -7,6 +7,7 @@ import { columns, DepartemenButtons } from "../../utils/DepartemenHelper";
 const DepartemenList = () => {
   const [departemen, setDepartemen] = useState([]);
   const [depLoading, setDepLoading] = useState(false);
+  const [filteredDepartemen, setFilteredDepartemen] = useState([]);
 
   const fetchDepartemen = async () => {
     setDepLoading(true);
@@ -31,6 +32,7 @@ const DepartemenList = () => {
           ),
         }));
         setDepartemen(data);
+        setFilteredDepartemen(data);
       }
     } catch (error) {
       if (error.response && !error.response.data.success) {
@@ -50,6 +52,13 @@ const DepartemenList = () => {
     setDepartemen(departemen.filter((dep) => dep._id !== id));
   };
 
+  const filterDepartemen = (e) => {
+    const records = departemen.filter((dep) =>
+      dep.dep_nama.toLowerCase().includes(e.target.value.toLowerCase())
+    );
+    setFilteredDepartemen(records);
+  };
+
   return (
     <>
       {depLoading ? (
@@ -59,11 +68,12 @@ const DepartemenList = () => {
           <div className="text-center">
             <h3 className="text-2xl font-bold">Kelola Departemen</h3>
           </div>
-          <div className="flex justify-between items-center">
+          <div className="flex justify-between items-center mb-4">
             <input
               type="text"
               placeholder="Search by Nama Dep"
               className="px-4 py-0.5"
+              onChange={filterDepartemen}
             />
             <Link
               to="/admin-dashboard/add-departemen"
@@ -73,7 +83,7 @@ const DepartemenList = () => {
             </Link>
           </div>
           <div>
-            <DataTable columns={columns} data={departemen} />
+            <DataTable columns={columns} data={filteredDepartemen} pagination />
           </div>
         </div>
       )}

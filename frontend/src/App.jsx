@@ -9,6 +9,8 @@ import AdminSummary from "./components/dashboard/AdminSummary";
 import DepartemenList from "./components/departemen/DepartemenList";
 import AddDepartemen from "./components/departemen/AddDepartemen";
 import EditDepartemen from "./components/departemen/EditDepartemen";
+import MahasiswaList from "./components/mahasiswa/MahasiswaList";
+import AddMahasiswa from "./components/mahasiswa/AddMahasiswa";
 
 function App() {
   return (
@@ -37,6 +39,15 @@ function App() {
         <Route
           path="/admin-dashboard/departemen/:id"
           element={<EditDepartemen />}
+        ></Route>
+
+        <Route
+          path="/admin-dashboard/mahasiswa"
+          element={<MahasiswaList />}
+        ></Route>
+        <Route
+          path="/admin-dashboard/add-mahasiswa"
+          element={<AddMahasiswa />}
         ></Route>
       </Route>
 

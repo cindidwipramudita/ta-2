@@ -29,11 +29,15 @@ const AdminSidebar = () => {
           <span>Dashboard</span>
         </NavLink>
         <NavLink
-          to="/admin-dashboard"
-          className="flex items-center space-x-4 block py-2.5 px-4 rounded"
+          to="/admin-dashboard/mahasiswa"
+          className={({ isActive }) =>
+            `${
+              isActive ? "bg-teal-500" : " "
+            } flex items-center space-x-4 block py-2.5 px-4 rounded`
+          }
         >
           <FaUsers />
-          <span>Pembimbing</span>
+          <span>Mahasiswa</span>
         </NavLink>
         <NavLink
           to="/admin-dashboard/departemen"
